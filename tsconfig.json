@@ -3,10 +3,7 @@
         "module": "es6",
         "lib": [
             "es2018",
-            "dom"
-        ],
-        "types": [
-            "node"
+            "esnext"
         ],
         "esModuleInterop": true,
         "target": "es6",
