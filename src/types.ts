@@ -2,6 +2,7 @@ import { WebAPIPerson } from "./person";
 import { WebAPIConversation } from "./conversation";
 import { WebAPIObject } from "./object";
 import { CreativeWork, WebAPI, Text } from "schema-dts";
+import { Type } from "./type";
 
 export interface WebAPIEntityBase extends WebAPIObject {
   name: Text;
@@ -9,11 +10,15 @@ export interface WebAPIEntityBase extends WebAPIObject {
   hasPart: WebAPIConversation[];
 }
 
-export type WebAPIEntity = CreativeWork & WebAPIEntityBase;
+export interface WebAPIEntity extends Type, WebAPIEntityBase {
+  "@type": "CreativeWork";
+}
 
 export interface WebAPIStateBase {
   name: string;
   mainEntityOfPage: WebAPIEntity;
 }
 
-export type WebAPIState = WebAPI & WebAPIStateBase;
+export interface WebAPIState extends Type, WebAPIStateBase {
+  "@type": "WebAPI";
+}

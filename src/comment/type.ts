@@ -1,7 +1,7 @@
 import { WebAPIObject } from "../object";
 import { WebAPIPerson } from "../person";
-import { Comment, ImageObject, AudioObject, VideoObject, Text } from "schema-dts";
-
+import { ImageObject, AudioObject, VideoObject, Text } from "schema-dts";
+import { Type } from "../type";
 // We can infer typing's if we wanted to... this doesn't belong here though
 // ["auditory", "visual"] | ["auditory"] | ["textual", "visual"] | ["textual", "auditory", "visual"]
 export interface WebAPICommentMediaBase extends WebAPIObject {
@@ -18,10 +18,14 @@ export interface WebAPICommentMediaBase extends WebAPIObject {
   video?: VideoObject;
 }
 
-export type WebAPIComment = Comment & WebAPICommentMediaBase;
+export interface WebAPIComment extends Type, WebAPICommentMediaBase {
+  "@type": "Comment";
+}
 
 export interface WebAPICommentParentBase extends WebAPICommentMediaBase {
   comment: WebAPICommentMediaBase[];
 }
 
-export type WebAPICommentParent = Comment & WebAPICommentParentBase;
+export interface WebAPICommentParent extends WebAPIComment, WebAPICommentParentBase {
+  "@type": "Comment";
+}

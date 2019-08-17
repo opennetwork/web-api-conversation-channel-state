@@ -1,5 +1,6 @@
 import { WebAPIObject } from "../object";
 import { Text, ImageObject, Person } from "schema-dts";
+import { Type } from "../type";
 
 export interface WebAPIPersonBase extends WebAPIObject {
   name: Text;
@@ -7,4 +8,6 @@ export interface WebAPIPersonBase extends WebAPIObject {
   image?: ImageObject;
 }
 
-export type WebAPIPerson = Person & WebAPIPersonBase;
+export interface WebAPIPerson extends Type, WebAPIPersonBase {
+  "@type": "Person"
+};
