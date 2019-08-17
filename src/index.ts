@@ -12,7 +12,7 @@ export * from "./person";
 export * from "./type";
 export * from "./types";
 
-export function createEntity(identifier: string, name: string): WebAPIEntity {
+export function createWebAPIEntity(identifier: string, name: string): WebAPIEntity {
   return {
     ...createWebAPIObject("CreativeWork", identifier),
     name: name,
@@ -21,7 +21,7 @@ export function createEntity(identifier: string, name: string): WebAPIEntity {
   };
 }
 
-export function create(name: string, entity: WebAPIEntity): WebAPIState {
+export function createWebAPIState(name: string, entity: WebAPIEntity): WebAPIState {
   return {
     "@type": "WebAPI",
     name: name,
