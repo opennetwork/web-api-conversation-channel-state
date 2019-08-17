@@ -9,5 +9,5 @@ export interface WebAPIPersonBase extends WebAPIObject {
 }
 
 export interface WebAPIPerson extends Type, WebAPIPersonBase {
-  "@type": "Person"
-};
+  "@type": "Person";
+}
