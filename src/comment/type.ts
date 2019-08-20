@@ -1,6 +1,6 @@
 import { WebAPIObject } from "../object";
 import { WebAPIPerson } from "../person";
-import { ImageObject, AudioObject, VideoObject, Text } from "schema-dts";
+import { ImageObject, AudioObject, VideoObject, Text, MediaObject, URL } from "schema-dts";
 import { Type } from "../type";
 
 export type AccessModeVisual = "visual";
@@ -22,19 +22,21 @@ export interface WebAPICommentMediaBase extends WebAPIObject {
   creator: WebAPIPerson;
   accessMode: AccessMode[];
   text?: Text;
-  image?: ImageObject;
-  audio?: AudioObject;
-  video?: VideoObject;
+  image?: ImageObject | ImageObject[];
+  audio?: AudioObject | AudioObject[];
+  video?: VideoObject | VideoObject[];
+  encoding?: MediaObject;
+  encodingFormat?: Text;
+  url?: URL;
+  description?: Text;
 }
 
 export interface WebAPIComment extends Type, WebAPICommentMediaBase {
   "@type": "Comment";
+  hasPart?: WebAPICommentMediaBase[];
 }
 
-export interface WebAPICommentParentBase extends WebAPICommentMediaBase {
-  comment: WebAPICommentMediaBase[];
-}
-
-export interface WebAPICommentParent extends WebAPIComment, WebAPICommentParentBase {
+export interface WebAPICommentParent extends WebAPIComment {
   "@type": "Comment";
+  comment: WebAPICommentMediaBase[];
 }
