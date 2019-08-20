@@ -33,7 +33,7 @@ export interface WebAPICommentMediaBase extends WebAPIObject {
 
 export interface WebAPIComment extends Type, WebAPICommentMediaBase {
   "@type": "Comment";
-  hasPart?: WebAPICommentMediaBase[];
+  hasPart?: WebAPIComment[];
 }
 
 export interface WebAPICommentParent extends WebAPIComment {
