@@ -29,6 +29,8 @@ export interface WebAPICommentMediaBase extends WebAPIObject {
   encodingFormat?: Text;
   url?: URL;
   description?: Text;
+  name?: Text;
+  alternativeHeadline?: Text;
 }
 
 export interface WebAPIComment extends Type, WebAPICommentMediaBase {
