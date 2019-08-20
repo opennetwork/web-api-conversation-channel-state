@@ -13,13 +13,13 @@ export type AccessModeVideoCaptioned = [AccessModeVisual, AccessModeAuditory, Ac
 export type AccessModeImage = [AccessModeVisual];
 export type AccessModeImageCaptioned = [AccessModeVisual, AccessModeTextual];
 
-export interface WebAPICommentResponseAction extends Type, WebAPIObject {
+export interface WebAPICommentResponseAction extends Type {
   "@type": "InteractAction";
   agent: WebAPIPerson[];
   name: string;
 }
 
-export interface WebAPICommentResponseInteractionCounter extends Type, WebAPIObject {
+export interface WebAPICommentResponseInteractionCounter extends Type {
   "@type": "InteractionCounter";
   interactionType: WebAPICommentResponseAction;
   userInteractionCount: number;
