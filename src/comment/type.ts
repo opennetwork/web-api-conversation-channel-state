@@ -30,6 +30,7 @@ export interface WebAPICommentMediaBase extends WebAPIObject {
   url?: URL;
   description?: Text;
   name?: Text;
+  headline?: Text;
   alternativeHeadline?: Text;
 }
 
