@@ -1,6 +1,6 @@
 import { WebAPIObject } from "../object";
 import { WebAPIPerson } from "../person";
-import { ImageObject, AudioObject, VideoObject, Text, MediaObject, URL } from "schema-dts";
+import { ImageObject, AudioObject, VideoObject, Text, MediaObject, URL, Action } from "schema-dts";
 import { Type } from "../type";
 
 export type AccessModeVisual = "visual";
@@ -12,6 +12,18 @@ export type AccessModeVideo = [AccessModeVisual, AccessModeAuditory];
 export type AccessModeVideoCaptioned = [AccessModeVisual, AccessModeAuditory, AccessModeTextual];
 export type AccessModeImage = [AccessModeVisual];
 export type AccessModeImageCaptioned = [AccessModeVisual, AccessModeTextual];
+
+export interface WebAPICommentResponseAction extends Type, WebAPIObject {
+  "@type": "InteractAction";
+  agent: WebAPIPerson[];
+  name: string;
+}
+
+export interface WebAPICommentResponseInteractionCounter extends Type, WebAPIObject {
+  "@type": "InteractionCounter";
+  interactionType: WebAPICommentResponseAction;
+  userInteractionCount: number;
+}
 
 export interface WebAPICommentMediaBase extends WebAPIObject {
   // Its either going to be one of:
@@ -32,6 +44,7 @@ export interface WebAPICommentMediaBase extends WebAPIObject {
   name?: Text;
   headline?: Text;
   alternativeHeadline?: Text;
+  interactionType?: WebAPICommentResponseInteractionCounter[];
 }
 
 export interface WebAPIComment extends Type, WebAPICommentMediaBase {
